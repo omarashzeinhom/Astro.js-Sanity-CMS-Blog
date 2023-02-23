@@ -9,7 +9,12 @@ const query = `*[_type == "categories"]`;
 const firstPost = await useSanityClient().fetch(query);
 console.log(firstPost);
 let postString = JSON.stringify(firstPost);
-console.log(firstPost?.categoryTitle)
+
+const queryB = `*[_type == "articles"]`;
+const firstPostB = await useSanityClient().fetch(query);
+console.log(firstPost);
+let postStringB = JSON.stringify(firstPost);
+
 
 // pass the query as props
 
@@ -20,6 +25,7 @@ console.log(firstPost?.categoryTitle)
     <p>Welcome to Astro JS </p>
   </main>
   {postString}
+  {postStringB}
   <Card title="Welcome" href="/" body="lorem" />
 </Layout>
 
