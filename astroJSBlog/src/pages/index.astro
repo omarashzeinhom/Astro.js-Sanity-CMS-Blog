@@ -9,11 +9,11 @@ const query = `*[_type == "categories"]`;
 const firstPost = await useSanityClient().fetch(query);
 console.log(firstPost);
 let postString = JSON.stringify(firstPost);
-
+//
 const queryB = `*[_type == "articles"]`;
-const firstPostB = await useSanityClient().fetch(query);
-console.log(firstPost);
-let postStringB = JSON.stringify(firstPost);
+const firstPostB = await useSanityClient().fetch(queryB);
+console.log(firstPostB);
+let postStringB = JSON.stringify(firstPostB);
 
 
 // pass the query as props
