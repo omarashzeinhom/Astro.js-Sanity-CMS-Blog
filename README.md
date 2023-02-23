@@ -1,14 +1,14 @@
 # Astrojs Blog In typescript & react
 
-- Built With [React]()
+- Built in [astro.build](https://astro.build/)
 
 ## Front End
 
-- Built in [astro.js]()
-- Start by
-``` yarn dev```
+- Built in [astro.build](https://astro.build/)
+- Start by ```bash yarn dev```
 
 ### Back End
-- Built in [sanity.io]()
-- Start by
-``` yarn start ```
+
+- Built in [sanity.io](https://www.sanity.io/)
+- LOGIN With github
+- Start by ```bash yarn start```
