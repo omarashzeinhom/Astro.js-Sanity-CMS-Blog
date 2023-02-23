@@ -5,6 +5,8 @@
 ## Front End
 
 - Built in [astro.build](https://astro.build/)
+- References
+- [sanity-astro-blog](https://www.sanity.io/guides/sanity-astro-blog)
 - Start by ```bash yarn dev```
 
 ### Back End
