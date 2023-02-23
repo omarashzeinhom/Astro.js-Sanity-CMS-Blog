@@ -10,8 +10,8 @@ const firstPost = await useSanityClient().fetch(query);
 console.log(firstPost);
 let postString = JSON.stringify(firstPost);
 //
-const queryB = `*[_type == "articles"]`;
-const firstPostB = await useSanityClient().fetch(queryB);
+const articleQuery = `*[_type == "articles"]`;
+const firstPostB = await useSanityClient().fetch(articleQuery);
 console.log(firstPostB);
 let postStringB = JSON.stringify(firstPostB);
 
@@ -20,13 +20,14 @@ let postStringB = JSON.stringify(firstPostB);
 
 ---
 
-<Layout title="Welcome to Astro. JS Blog">
+<Layout title="ANDGOEDU Blog">
   <main>
-    <p>Welcome to Astro JS </p>
+    <p>Welcome to ANDGOEDU Blog </p>
   </main>
   {postString}
+  <hr/>
   {postStringB}
-  <Card title="Welcome" href="/" body="lorem" />
+  <Card title="Welcome" href="/" body="Home" />
 </Layout>
 
 <style>
