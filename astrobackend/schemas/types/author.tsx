@@ -30,7 +30,8 @@ const authors = {
       of: [
         {
           title: "MD",
-          type: "markdown",
+          // CHANGE TO MARKDOWN
+          type: "string",
           styles: [{ title: "Normal", value: "normal" }],
           lists: [],
         },

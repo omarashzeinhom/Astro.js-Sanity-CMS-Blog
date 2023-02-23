@@ -3,18 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import { useSanityClient } from "astro-sanity";
 
-export async function getFirstPost() {
-  const query = `*[_type == "categories"]`;
-  const firstPost = await useSanityClient().fetch(query);
-  console.log(firstPost);
 
-  return firstPost;
-}
 
 const query = `*[_type == "categories"]`;
 const firstPost = await useSanityClient().fetch(query);
 console.log(firstPost);
 let postString = JSON.stringify(firstPost);
+console.log(firstPost?.categoryTitle)
+
+// pass the query as props
+
 ---
 
 <Layout title="Welcome to Astro. JS Blog">
