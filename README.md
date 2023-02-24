@@ -7,6 +7,7 @@
 - Built in [astro.build](https://astro.build/)
 - References
 - [sanity-astro-blog](https://www.sanity.io/guides/sanity-astro-blog)
+- [littlesticks - astro-sanity-minimal-starter](https://github.com/littlesticks/astro-sanity-minimal-starter/tree/graphql)
 - Start by ```bash yarn dev```
 
 ### Back End

@@ -7,13 +7,17 @@ import { useSanityClient } from "astro-sanity";
 
 const query = `*[_type == "categories"]`;
 const firstPost = await useSanityClient().fetch(query);
-console.log(firstPost);
+//console.log(firstPost);
 let postString = JSON.stringify(firstPost);
 //
 const articleQuery = `*[_type == "articles"]`;
 const firstPostB = await useSanityClient().fetch(articleQuery);
-console.log(firstPostB);
+//console.log(firstPostB);
 let postStringB = JSON.stringify(firstPostB);
+
+
+
+
 
 
 // pass the query as props
@@ -24,7 +28,10 @@ let postStringB = JSON.stringify(firstPostB);
   <main>
     <p>Welcome to ANDGOEDU Blog </p>
   </main>
+ 
+<hr/>
   {postString}
+  
   <hr/>
   {postStringB}
   <Card title="Welcome" href="/" body="Home" />

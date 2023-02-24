@@ -2,11 +2,11 @@
 import { useSanityClient } from 'astro-sanity';
 
 export async function getStaticPaths() {
-  const posts = await useSanityClient().fetch(`*[_type == "articles"]`);
+  const articles = await useSanityClient().fetch(`*[_type == "articles"]`);
 
-  return posts.map(({ slug, title }) => {
+  return articles.map(({ slug, title }) => {
     return {
-      params: { slug: slug.current },
+      params: { slug: slug },
       props: { title },
     };
   });
