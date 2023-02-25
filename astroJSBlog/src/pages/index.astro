@@ -35,11 +35,8 @@ let articleString = JSON.stringify(articles);
   {
     categories.map((category) => (
       <div>
-        <button >
-          <a href="">
-            {category?.categoryTitle}
-
-            </a>
+        <button>
+          <a href="">{category?.categoryTitle}</a>
         </button>
         <h4>
           Slug
@@ -49,36 +46,35 @@ let articleString = JSON.stringify(articles);
     ))
   }
   <hr />
+
   <h3>Articles</h3>
-  {articleString}
   {
     articles.map((article) => (
       <div>
-       <section>
-        <h2>
-          {article?.title}
-          <a href=          {article?.slug}
-> Link Test</a>
-        </h2>
+        <section>
+          <h2>
+            {article?.title}
+            <a href={`./article/${article?.title}`}>Link Test</a>
+          </h2>
 
-        <p>{article?.articleBody}</p>
+          <p>{article?.articleBody}</p>
 
-        <img
+          <img
             width="150"
             height="150"
             style="border-radius: 90%;"
             src={urlForImage(article?.articleImage)}
           />
-          
-        <small>
-          {article?._createdAt}
-          {article?.slug}
-{article?.articleAuthor}
-        </small>
-        <button>
-         <a href={article?.categories}>
-          {article?.categories}
-          </a>
+
+          <small>
+            {article?._createdAt}
+            {article?.slug}
+            {article?.articleAuthor}
+          </small>
+          <button>
+            <a href={`./article/${article?.categories}`}>
+              {article?.categories}
+            </a>
           </button>
         </section>
       </div>
