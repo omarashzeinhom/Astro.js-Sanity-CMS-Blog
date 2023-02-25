@@ -61,13 +61,7 @@ let articleString = JSON.stringify(articles);
         <div>
           <section>
             <h2>
-              <a
-                href={`./article/${JSON.stringify(
-                  article?.articleSlug?.current
-                )}
-`}
-              >
-                {" "}
+              <a href={`article/${article?.articleSlug?.current}`}>
                 {article?.title}
               </a>
             </h2>
@@ -86,11 +80,9 @@ let articleString = JSON.stringify(articles);
               <br />
               {JSON.stringify(article?.articleSlug?.current)}
               <br />
-
-              {article?.articleAuthor}
             </small>
             <button>
-              <a href={`./article/${article?.categories}`}>
+              <a href={`/article/${article?.categories}`}>
                 {article?.categories}
               </a>
             </button>
