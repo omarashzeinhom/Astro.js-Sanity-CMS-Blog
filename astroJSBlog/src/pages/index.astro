@@ -2,38 +2,81 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import { useSanityClient } from "astro-sanity";
+import { urlForImage } from "../sanity/urlForImage";
 
-
-
-const query = `*[_type == "categories"]`;
-const firstPost = await useSanityClient().fetch(query);
+const categoriesQuery = `*[_type == "categories"]`;
+const categories = await useSanityClient().fetch(categoriesQuery);
 //console.log(firstPost);
-let postString = JSON.stringify(firstPost);
+let categoryString = JSON.stringify(categories);
 //
-const articleQuery = `*[_type == "articles"]`;
-const firstPostB = await useSanityClient().fetch(articleQuery);
+const articlesQuery = `*[_type == "articles"]`;
+const articles = await useSanityClient().fetch(articlesQuery);
 //console.log(firstPostB);
-let postStringB = JSON.stringify(firstPostB);
-
-
-
-
-
+let articleString = JSON.stringify(articles);
 
 // pass the query as props
-
 ---
 
 <Layout title="ANDGOEDU Blog">
+  <head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>My blog</title>
+	</head>
+
   <main>
-    <p>Welcome to ANDGOEDU Blog </p>
+    <p>Welcome to ANDGOEDU Blog</p>
   </main>
- 
-<hr/>
-  {postString}
-  
-  <hr/>
-  {postStringB}
+
+  <hr />
+  <h2>Categories</h2>
+{categories.map((category)=> (
+<div>
+  <h3>
+    Title:
+    {category?.categoryTitle}
+    </h3>
+    <h4>
+      Slug
+      {category?.categorySlug}
+</h4>
+  </div>
+))}
+  <hr />
+  <h3>Articles</h3>
+  {articleString}
+{articles.map((article)=> (
+  <div>
+
+
+    <h2>
+      {article?.title}
+      <a href={`/article/${article?.slug}`}> Link Test</a>
+
+      </h2>
+
+      <p>
+        {article?.articleBody}
+
+        </p>
+
+        <small>
+      {article?._createdAt}
+      {article?.slug}
+      
+<img
+width="150"
+height="150"
+style="border-radius: 90%;"
+src={urlForImage(article?.articleImage)}
+/>
+    </small>
+  </div>
+    
+))}  
+
   <Card title="Welcome" href="/" body="Home" />
 </Layout>
 
