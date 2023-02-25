@@ -2,25 +2,32 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Header from "../components/Header.astro";
+import NavigationBar from "../components/NavigationBar.astro";
+
 import { useSanityClient } from "astro-sanity";
 import { urlForImage } from "../sanity/urlForImage";
+import useState from "@astrojs/react";
 
+// Categories
 const categoriesQuery = `*[_type == "categories"]`;
 const categories = await useSanityClient().fetch(categoriesQuery);
-//console.log(firstPost);
-let categoryString = JSON.stringify(categories);
-//
+// console.log(firstPost);
+// let categoryString = JSON.stringify(categories);
+
+// Articles
 const articlesQuery = `*[_type == "articles"]`;
 const articles = await useSanityClient().fetch(articlesQuery);
-//console.log(firstPostB);
-let articleString = JSON.stringify(articles);
+// console.log(firstPostB);
+// let articleString = JSON.stringify(articles);
 
-// pass the query as props
+// TODO Handle categories.filter()
+
+// DISPLAY ARTICLES according to categories
 ---
 
 <Layout title="ANDGOEDU Blog">
   <Header />
-
+  <NavigationBar />
   <main>
     <p>Welcome to ANDGOEDU Blog</p>
   </main>

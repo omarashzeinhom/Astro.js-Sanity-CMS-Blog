@@ -1,0 +1,31 @@
+---
+
+const Links = [
+    {
+        title: "Home",
+        link: "/",
+    },
+    {
+        title: "Categories",
+        link: "/categories",
+    },
+    {
+        title: "Articles",
+        link: "/",
+    },
+]
+
+---
+
+<nav>
+   <ul>
+    {Links.map((link)=>
+        (
+        <li>
+         
+        <a href={link?.link}>   {link?.title}</a>
+    </li>
+    
+        ))}
+   </ul>
+</nav>
