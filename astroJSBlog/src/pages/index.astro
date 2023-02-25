@@ -36,7 +36,9 @@ let articleString = JSON.stringify(articles);
     categories.map((category) => (
       <div>
         <button>
-          <a href="">{category?.categoryTitle}</a>
+          <a href={`/article/${category?.categoryTitle}`}>
+            {category?.categoryTitle}
+          </a>
         </button>
         <h4>
           Slug
