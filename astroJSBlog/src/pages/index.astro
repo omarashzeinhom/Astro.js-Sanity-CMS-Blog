@@ -19,12 +19,12 @@ let articleString = JSON.stringify(articles);
 
 <Layout title="ANDGOEDU Blog">
   <head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>My blog</title>
-	</head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>My blog</title>
+  </head>
 
   <main>
     <p>Welcome to ANDGOEDU Blog</p>
@@ -32,50 +32,58 @@ let articleString = JSON.stringify(articles);
 
   <hr />
   <h2>Categories</h2>
-{categories.map((category)=> (
-<div>
-  <h3>
-    Title:
-    {category?.categoryTitle}
-    </h3>
-    <h4>
-      Slug
-      {category?.categorySlug}
-</h4>
-  </div>
-))}
+  {
+    categories.map((category) => (
+      <div>
+        <button >
+          <a href="">
+            {category?.categoryTitle}
+
+            </a>
+        </button>
+        <h4>
+          Slug
+          {category?.categorySlug}
+        </h4>
+      </div>
+    ))
+  }
   <hr />
   <h3>Articles</h3>
   {articleString}
-{articles.map((article)=> (
-  <div>
+  {
+    articles.map((article) => (
+      <div>
+       <section>
+        <h2>
+          {article?.title}
+          <a href=          {article?.slug}
+> Link Test</a>
+        </h2>
 
+        <p>{article?.articleBody}</p>
 
-    <h2>
-      {article?.title}
-      <a href={`/article/${article?.slug}`}> Link Test</a>
-
-      </h2>
-
-      <p>
-        {article?.articleBody}
-
-        </p>
-
+        <img
+            width="150"
+            height="150"
+            style="border-radius: 90%;"
+            src={urlForImage(article?.articleImage)}
+          />
+          
         <small>
-      {article?._createdAt}
-      {article?.slug}
-      
-<img
-width="150"
-height="150"
-style="border-radius: 90%;"
-src={urlForImage(article?.articleImage)}
-/>
-    </small>
-  </div>
-    
-))}  
+          {article?._createdAt}
+          {article?.slug}
+{article?.articleAuthor}
+        </small>
+        <button>
+         <a href={article?.categories}>
+          {article?.categories}
+          </a>
+          </button>
+        </section>
+      </div>
+    ))
+  }
 
   <Card title="Welcome" href="/" body="Home" />
 </Layout>
