@@ -1,7 +1,10 @@
 ---
-
 import Header from "../components/Header.astro";
 import NavigationBar from "../components/NavigationBar.astro";
+import useState from "@astrojs/react";
+import useEffect from "@astrojs/react";
+import React from "@astrojs/react";
+
 
 import { useSanityClient } from "astro-sanity";
 import { urlForImage } from "../sanity/urlForImage";
@@ -11,25 +14,27 @@ const categories = await useSanityClient().fetch(categoriesQuery);
 // console.log(firstPost);
 // let categoryString = JSON.stringify(categories);
 
+
 ---
+
 <Header />
 <NavigationBar />
 
 <h2>Categories</h2>
-  {
-    categories.map(
-      (category: { categoryTitle: string; categorySlug: string }) => (
-        <div>
-          <button>
-            <a href={`/article/${category?.categorySlug}`}>
-              {category?.categoryTitle}
-            </a>
-          </button>
-          <h4>
-            Slug
-            {category?.categorySlug}
-          </h4>
-        </div>
-      )
+{
+  categories.map(
+    (category: { categoryTitle: string; categorySlug: string }) => (
+      <div>
+        <button>
+          <a href={`/article/${category?.categorySlug}`}>
+            {category?.categoryTitle}
+          </a>
+        </button>
+        <h4>
+          Slug
+          {category?.categorySlug}
+        </h4>
+      </div>
     )
-  }
+  )
+}

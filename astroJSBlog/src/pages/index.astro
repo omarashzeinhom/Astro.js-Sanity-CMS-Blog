@@ -6,13 +6,12 @@ import NavigationBar from "../components/NavigationBar.astro";
 
 import { useSanityClient } from "astro-sanity";
 import { urlForImage } from "../sanity/urlForImage";
-import useState from "@astrojs/react";
 
 // Articles
 const articlesQuery = `*[_type == "articles"]`;
 const articles = await useSanityClient().fetch(articlesQuery);
 // console.log(firstPostB);
-// let articleString = JSON.stringify(articles);
+let articleString = JSON.stringify(articles);
 
 // TODO Handle categories.filter()
 

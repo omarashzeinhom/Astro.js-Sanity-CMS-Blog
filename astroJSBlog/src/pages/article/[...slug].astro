@@ -16,7 +16,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { title, articleBody, articleImage, _createdAt } = Astro.props;
+const { title, articleBody, articleImage, _createdAt, categories } = Astro.props;
 ---
 
 <h1>{title}</h1>
@@ -28,6 +28,11 @@ const { title, articleBody, articleImage, _createdAt } = Astro.props;
   style="border-radius: 90%;"
   src={urlForImage(articleImage)}
 />
+<button>
+  {categories}
+
+</button>
+
 
 <PortableText portableText={articleBody} />
 
