@@ -33,53 +33,65 @@ let articleString = JSON.stringify(articles);
   <hr />
   <h2>Categories</h2>
   {
-    categories.map((category) => (
-      <div>
-        <button>
-          <a href={`/article/${category?.categoryTitle}`}>
-            {category?.categoryTitle}
-          </a>
-        </button>
-        <h4>
-          Slug
-          {category?.categorySlug}
-        </h4>
-      </div>
-    ))
+    categories.map(
+      (category: { categoryTitle: string; categorySlug: string }) => (
+        <div>
+          <button>
+            <a href={`/article/${category?.categoryTitle}`}>
+              {category?.categoryTitle}
+            </a>
+          </button>
+          <h4>
+            Slug
+            {category?.categorySlug}
+          </h4>
+        </div>
+      )
+    )
   }
   <hr />
 
   <h3>Articles</h3>
   {
-    articles.map((article) => (
-      <div>
-        <section>
-          <h2>
-            <a href={`./article/${article?.title}`}> {article?.title}</a>
-          </h2>
+    articles.map(
+      (article: {
+        title: string;
+        articleBody: string;
+        articleImage: any;
+        _createdAt: Date;
+        slug: string;
+        articleAuthor: unknown;
+        categories: string;
+      }) => (
+        <div>
+          <section>
+            <h2>
+              <a href={`./article/${article?.title}`}> {article?.title}</a>
+            </h2>
 
-          <p>{article?.articleBody}</p>
+            <p>{article?.articleBody}</p>
 
-          <img
-            width="150"
-            height="150"
-            style="border-radius: 90%;"
-            src={urlForImage(article?.articleImage)}
-          />
+            <img
+              width="150"
+              height="150"
+              style="border-radius: 90%;"
+              src={urlForImage(article?.articleImage)}
+            />
 
-          <small>
-            {article?._createdAt}
-            {article?.slug}
-            {article?.articleAuthor}
-          </small>
-          <button>
-            <a href={`./article/${article?.categories}`}>
-              {article?.categories}
-            </a>
-          </button>
-        </section>
-      </div>
-    ))
+            <small>
+              {article?._createdAt}
+              {article?.slug}
+              {article?.articleAuthor}
+            </small>
+            <button>
+              <a href={`./article/${article?.categories}`}>
+                {article?.categories}
+              </a>
+            </button>
+          </section>
+        </div>
+      )
+    )
   }
 
   <Card title="Welcome" href="/" body="Home" />
