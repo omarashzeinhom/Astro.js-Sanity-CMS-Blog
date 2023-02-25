@@ -55,8 +55,7 @@ let articleString = JSON.stringify(articles);
       <div>
         <section>
           <h2>
-            {article?.title}
-            <a href={`./article/${article?.title}`}>Link Test</a>
+            <a href={`./article/${article?.title}`}> {article?.title}</a>
           </h2>
 
           <p>{article?.articleBody}</p>
