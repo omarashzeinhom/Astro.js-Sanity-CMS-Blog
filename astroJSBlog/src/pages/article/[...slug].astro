@@ -16,11 +16,12 @@ export async function getStaticPaths() {
   });
 }
 
-const { title, articleBody, articleImage } = Astro.props;
+const { title, articleBody, articleImage, _createdAt } = Astro.props;
 ---
 
 <h1>{title}</h1>
 <p>{articleBody}</p>
+<small>{_createdAt}</small>
 <img
   width="150"
   height="150"
@@ -29,3 +30,9 @@ const { title, articleBody, articleImage } = Astro.props;
 />
 
 <PortableText portableText={articleBody} />
+
+<button>
+<a href="/">
+  Go Back Home
+</a>
+</button>

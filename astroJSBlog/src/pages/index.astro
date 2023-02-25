@@ -32,7 +32,7 @@ let articleString = JSON.stringify(articles);
       (category: { categoryTitle: string; categorySlug: string }) => (
         <div>
           <button>
-            <a href={`/article/${category?.categoryTitle}`}>
+            <a href={`/article/${category?.categorySlug}`}>
               {category?.categoryTitle}
             </a>
           </button>
@@ -78,7 +78,7 @@ let articleString = JSON.stringify(articles);
             <small>
               {article?._createdAt}
               <br />
-              {JSON.stringify(article?.articleSlug?.current)}
+              {article?.articleSlug?.current}
               <br />
             </small>
             <button>
