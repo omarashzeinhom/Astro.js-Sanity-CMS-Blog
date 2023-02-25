@@ -19,7 +19,7 @@ let articleString = JSON.stringify(articles);
 ---
 
 <Layout title="ANDGOEDU Blog">
- <Header/>
+  <Header />
 
   <main>
     <p>Welcome to ANDGOEDU Blog</p>
@@ -54,14 +54,22 @@ let articleString = JSON.stringify(articles);
         articleBody: string;
         articleImage: any;
         _createdAt: Date;
-        slug: string;
+        articleSlug: string;
         articleAuthor: unknown;
         categories: string;
       }) => (
         <div>
           <section>
             <h2>
-              <a href={`./article/${article?.title}`}> {article?.title}</a>
+              <a
+                href={`./article/${JSON.stringify(
+                  article?.articleSlug?.current
+                )}
+`}
+              >
+                {" "}
+                {article?.title}
+              </a>
             </h2>
 
             <p>{article?.articleBody}</p>
@@ -75,7 +83,10 @@ let articleString = JSON.stringify(articles);
 
             <small>
               {article?._createdAt}
-              {article?.slug}
+              <br />
+              {JSON.stringify(article?.articleSlug?.current)}
+              <br />
+
               {article?.articleAuthor}
             </small>
             <button>
