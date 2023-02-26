@@ -2,8 +2,17 @@
 import { useSanityClient } from "astro-sanity";
 import PortableText from "../../components/PortableText.astro";
 
+
+
+
 export async function getStaticPaths() {
   const categories = await useSanityClient().fetch(`*[_type == "categories"]`);
+
+
+ 
+
+
+
 
   return categories.map((category: { categorySlug: { current: any } }) => {
     return {
@@ -13,15 +22,35 @@ export async function getStaticPaths() {
       props: { ...category },
     };
   });
+  
 }
+const categories = await useSanityClient().fetch(`*[_type == "categories"]`);
 
 const { categoryTitle , categorySlug, _createdAt } = Astro.props;
+const articles = await useSanityClient().fetch(`*[_type == "articles"]`);
+
+
 ---
+
 
 <h1>{categoryTitle}</h1>
 <p>{categorySlug}</p>
 <small>{_createdAt}</small>
 
+{articles.map((article: { title: string; articleSlug: string; categories: [string]; current: any; })=> (
+  <div>
+    <a href={`../article/${article?.articleSlug?.current}`}>
+          {article?.title}
+
+      </a>
+  
+    <button>
+      {article?.categories}
+</button>
+    </div>
+
+
+))}
 
 
 
