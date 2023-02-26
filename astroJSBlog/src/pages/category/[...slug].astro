@@ -1,0 +1,32 @@
+---
+import { useSanityClient } from "astro-sanity";
+import PortableText from "../../components/PortableText.astro";
+
+export async function getStaticPaths() {
+  const categories = await useSanityClient().fetch(`*[_type == "categories"]`);
+
+  return categories.map((category: { categorySlug: { current: any } }) => {
+    return {
+      params: {
+        slug: category?.categorySlug || "",
+      },
+      props: { ...category },
+    };
+  });
+}
+
+const { categoryTitle , categorySlug, _createdAt } = Astro.props;
+---
+
+<h1>{categoryTitle}</h1>
+<p>{categorySlug}</p>
+<small>{_createdAt}</small>
+
+
+
+
+<PortableText portableText={categoryTitle} />
+
+<button>
+  <a href="/"> Go Back Home</a>
+</button>
