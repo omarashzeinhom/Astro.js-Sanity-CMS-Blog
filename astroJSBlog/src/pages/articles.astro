@@ -24,8 +24,11 @@ const articles = await useSanityClient().fetch(articlesQuery);
   <NavigationBar />
 
   <hr />
-
-  <h3>Articles</h3>
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">  Articles
+</h2>
+      <p class="mt-2 text-lg leading-8 text-gray-600">Explore Articles</p>
+    </div>
   {
     articles.map(
       (article: {
@@ -37,84 +40,42 @@ const articles = await useSanityClient().fetch(articlesQuery);
         articleAuthor: unknown;
         categories: string;
       }) => (
-        <div>
-          <section>
-            <h2>
-              <a href={`article/${article?.articleSlug?.current}`}>
-                {article?.title}
-              </a>
-            </h2>
-
-            <p>{article?.articleBody}</p>
-
-            <img
+  <div  class="flex items-center">
+    <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      <article class="flex max-w-xl flex-col items-start justify-between">
+        <div class="flex items-center gap-x-4 text-xs">
+          <div class="relative mt-8 flex items-center gap-x-4">
+          <img
               width="150"
               height="150"
               style="border-radius: 90%;"
               src={urlForImage(article?.articleImage)}
             />
-
-            <small>
-              {article?._createdAt}
-              <br />
-              {article?.articleSlug?.current}
-              <br />
-            </small>
-            <button>
-              <a href={`/article/${article?.categories}`}>
+         
+        </div>
+          <time datetime="2020-03-16" class="text-gray-500">{article?._createdAt}</time>
+          <a   href={`/category/${article?.categories}`} class="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100">
                 {article?.categories}
               </a>
-            </button>
-          </section>
         </div>
+        <div class="group relative">
+          <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+           
+            <a href={`article/${article?.articleSlug?.current}`}>
+                {article?.title}
+              </a>
+          </h3>
+       
+          <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">{article?.articleBody}</p>
+        </div>
+        
+      </article>
+    </div>
+  </div>
       )
     )
-  }
+  };
 
   <Card title="Welcome" href="/" body="Home" />
 </Layout>
 
-<style>
-  main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 60ch;
-  }
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0;
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
-  }
-  .instructions code {
-    font-size: 0.875em;
-    font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
-  }
-</style>

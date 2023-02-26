@@ -1,31 +1,28 @@
 ---
-
 const Links = [
-    {
-        title: "Home",
-        link: "/",
-    },
-    {
-        title: "Categories",
-        link: "/categories",
-    },
-    {
-        title: "Articles",
-        link: "/articles",
-    },
-]
-
+  {
+    title: "Home",
+    link: "/",
+  },
+  {
+    title: "Categories",
+    link: "/categories",
+  },
+  {
+    title: "Articles",
+    link: "/articles",
+  },
+];
 ---
 
 <nav>
-   <ul>
-    {Links.map((link)=>
-        (
+  <ul>
+    {
+      Links.map((link) => (
         <li>
-         
-        <a href={link?.link}>   {link?.title}</a>
-    </li>
-    
-        ))}
-   </ul>
+          <a href={link?.link}> {link?.title}</a>
+        </li>
+      ))
+    }
+  </ul>
 </nav>
