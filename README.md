@@ -11,6 +11,8 @@
 - [guides/sanity-astro-blog](https://www.sanity.io/guides/sanity-astro-blog)
 - Start by ```bash yarn dev```
 
+- Deploy by ```bash yarn build``` and upload `./dist/` directory to [netlify](https://app.netlify.com)
+
 ### Back End
 
 - Built in [sanity.io](https://www.sanity.io/)
