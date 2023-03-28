@@ -2,6 +2,7 @@
 import { useSanityClient } from "astro-sanity";
 import PortableText from "../../components/PortableText.astro";
 import { urlForImage } from "../../sanity/urlForImage";
+import NavigationBar from "../../components/NavigationBar.astro";
 
 export async function getStaticPaths() {
   const articles = await useSanityClient().fetch(`*[_type == "articles"]`);
@@ -19,6 +20,7 @@ export async function getStaticPaths() {
 const { title, articleBody, articleImage, _createdAt, categories } = Astro.props;
 ---
 
+<NavigationBar/>
 
 <div class="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
   <div class="absolute inset-0 -z-10 overflow-hidden">
