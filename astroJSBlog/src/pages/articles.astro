@@ -54,6 +54,7 @@ const articles = await useSanityClient().fetch(articlesQuery);
                     style="border-radius: 10%;
               box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem gray;
               "
+              loading="lazy"
                     src={urlForImage(article?.articleImage)}
                   />
                 </div>

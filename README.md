@@ -12,6 +12,8 @@
 - Start by ```bash yarn dev```
 - References
 - [A zero-JavaScript navigation menu for Tailwind CSS](https://www.brycewray.com/posts/2021/09/zero-javascript-navigation-menu-tailwind-css/)
+- [ Tailwind CSS Social Media Icons & Buttons ](https://tailwind-elements.com/docs/standard/components/social-buttons/)
+- [ Tailwind CSS Footer ](https://tailwind-elements.com/docs/standard/navigation/footer/)
 
 - Deploy by ```bash yarn build``` and upload `./dist/` directory to [netlify](https://app.netlify.com)
 
