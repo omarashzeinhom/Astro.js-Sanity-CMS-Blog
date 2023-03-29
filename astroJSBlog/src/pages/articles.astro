@@ -66,7 +66,7 @@ const articles = await useSanityClient().fetch(articlesQuery);
               </div>
               <div class="group relative">
                 <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">
-                  {article?.articleBody}
+                  {article?.articleBody.substring(0,15 )+ "..."}
                 </p>
 
                 <time datetime="2020-03-16" class="text-gray-500">

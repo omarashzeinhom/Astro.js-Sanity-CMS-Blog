@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import NavigationBar from "../components/NavigationBar.astro";
 
 import { useSanityClient } from "astro-sanity";
+import Layout from "../layouts/Layout.astro";
 // Categories
 const categoriesQuery = `*[_type == "categories"]`;
 const categories = await useSanityClient().fetch(categoriesQuery);
@@ -14,8 +15,11 @@ let categoryString = JSON.stringify(categories);
 
 <Header />
 <NavigationBar />
-<hr/>
-<h2>Categories</h2>
+<br/>
+<br/>
+
+<Layout title="categories">
+  <h2>Categories</h2>
 <hr/>
 
 {
@@ -27,11 +31,9 @@ let categoryString = JSON.stringify(categories);
             {category?.categoryTitle}
           </a>
         </button>
-        <br/>
-        <small>
-          {category?.categorySlug}
-        </small>
+    
       </div>
     )
   )
 }
+</Layout>
