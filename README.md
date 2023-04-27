@@ -1,6 +1,7 @@
 # Astrojs Blog In typescript & react
 
 - Built in [astro.build](https://astro.build/)
+- [Demo](https://andgoedublog.netlify.app/)
 
 ## Front End
 
