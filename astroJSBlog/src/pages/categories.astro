@@ -19,20 +19,16 @@ let categoryString = JSON.stringify(categories);
 
 <Layout title="categories">
   <h2>Categories</h2>
-<hr/>
+  <hr/>
 
-{
-  categories.map(
-    (category: { categoryTitle: string; categorySlug: string }) => (
-      <div class="flex justify-center space-x-2">
-        <button>
-          <a href={`category/${category?.categorySlug}`}>
-            {category?.categoryTitle}
-          </a>
-        </button>
-    
-      </div>
-    )
-  )
-}
+  {categories.map((category: { categoryTitle: string; categorySlug: string }) => (
+    <div class="flex justify-center space-x-2">
+      <button>
+        <a href={`/category/${category?.categorySlug}/`}>
+          {category?.categoryTitle}
+        </a>
+      </button>
+    </div>
+  ))}
 </Layout>
+
