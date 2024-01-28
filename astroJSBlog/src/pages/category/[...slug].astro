@@ -15,17 +15,35 @@ export async function getStaticPaths() {
       props: { ...category },
     };
   });
-
-
-
-
-
-  
 }
+
+
+
 const { categoryTitle , categorySlug, _createdAt } = Astro.props;
 const articles = await useSanityClient().fetch(`*[_type == "articles"]`);
 
+export async function getStaticProps({ params }: { params: { slug: string } }) {
+  const category = await useSanityClient().fetch(
+    `*[_type == "categories" && categorySlug.current == $slug][0]`,
+    { slug: params.slug }
+  );
+  const articles = await useSanityClient().fetch(
+    `*[_type == "articles" && references($category)][$fromIndex..$toIndex]`,
+    {
+      category: category?._id,
+      fromIndex: 0,
+      toIndex: 10, // Adjust as needed
+    }
+  );
 
+  return {
+    props: {
+      categoryTitle: category?.categoryTitle || "",
+      categorySlug: category?.categorySlug?.current || "",
+      articles: articles || [],
+    },
+  };
+}
 
 
 
