@@ -4,7 +4,6 @@ import PortableText from "../../components/PortableText.astro";
 import NavigationBar from "../../components/NavigationBar.astro";
 import Layout from "../../layouts/Layout.astro";
 
-
 export async function getStaticPaths() {
   const categories = await useSanityClient().fetch(`*[_type == "categories"]`);
   return categories.map((category: { categorySlug: { current: any } }) => {
@@ -17,9 +16,7 @@ export async function getStaticPaths() {
   });
 }
 
-
-
-const { categoryTitle , categorySlug, _createdAt } = Astro.props;
+const { categoryTitle, categorySlug, _createdAt } = Astro.props;
 const articles = await useSanityClient().fetch(`*[_type == "articles"]`);
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
@@ -44,52 +41,33 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     },
   };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
+
 <Layout title={categorySlug}>
-  <NavigationBar/>
+  <NavigationBar />
   <p class="text-black group-hover:text-gray">Category</p>
   <h2 class="text-gray-500 bold">{categoryTitle}</h2>
   <p class="hidden">{categorySlug}</p>
   <small>{_createdAt}</small>
-  
+
   {
-articles.map((article: { title: string; articleSlug: string; categories: [string]; current: any; })=> (
-  <div>
-    <a href={`../article/${article?.articleSlug?.current}`}>
-          {article?.categories}
-          {article?.title}
+    articles.map(
+      (article: {
+        title: string;
+        articleSlug: string;
+        categories: [string];
+        current: any;
+      }) => (
+        <div>
+          <a href={`/article/${article?.articleSlug?.current}`}>
+            {article?.title}
+          </a>
+        </div>
+      )
+    )
+  }
 
-      </a>
-  
-    
-    </div>
-
-
-))}
-  
-  
-  
-  
   <button>
     <a href="/"> Go Back Home</a>
   </button>
 </Layout>
-

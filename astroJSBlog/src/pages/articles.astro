@@ -24,7 +24,6 @@ const articles = await useSanityClient().fetch(articlesQuery);
   <NavigationBar />
   <Card title="Explore" href="/articles" body="Articles" />
 
-
   <div class="mx-auto max-w-2xl lg:mx-0">
     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
       Articles
@@ -54,19 +53,19 @@ const articles = await useSanityClient().fetch(articlesQuery);
                     style="border-radius: 10%;
               box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem gray;
               "
-              loading="lazy"
+                    loading="lazy"
                     src={urlForImage(article?.articleImage)}
                   />
                 </div>
                 <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                  <a href={`article/${article?.articleSlug?.current}`}>
+                  <a href={`/article/${article?.articleSlug?.current}/`}>
                     {article?.title}
                   </a>
                 </h3>
               </div>
               <div class="group relative">
                 <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">
-                  {article?.articleBody.substring(0,15 )+ "..."}
+                  {article?.articleBody.substring(0, 15) + "..."}
                 </p>
 
                 <time datetime="2020-03-16" class="text-gray-500">
@@ -85,5 +84,4 @@ const articles = await useSanityClient().fetch(articlesQuery);
       )
     )
   };
-
 </Layout>
