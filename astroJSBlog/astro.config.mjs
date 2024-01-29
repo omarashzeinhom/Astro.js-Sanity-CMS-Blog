@@ -3,6 +3,8 @@ import sanity from 'astro-sanity';
 import markdownIntegration from '@astropub/md'
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
+import { createMarkdownProcessor } from '@astrojs/markdown-remark'; // Import the correct export
+
 
 export default defineConfig({
   vite: {
@@ -28,6 +30,7 @@ export default defineConfig({
     remarkPlugins: [],
     rehypePlugins: [],
     //syntaxHighlight: 'shiki',
+    createMarkdownProcessor, // Use the correct export
   },
   components: {
     types: {
