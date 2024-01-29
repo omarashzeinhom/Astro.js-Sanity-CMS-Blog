@@ -21,7 +21,7 @@ export default defineConfig({
     gfm: false,
     remarkPlugins: [],
     rehypePlugins: [],
-    //syntaxHighlight: 'shiki',
+    syntaxHighlight: 'shiki',
   },
   components: {
     types: {
