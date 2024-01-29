@@ -1,5 +1,74 @@
 # Astrojs Blog In typescript & react
 
+
+- Add Your Own Sanity Project ID. in astro.config.mjs
+```
+export default defineConfig({
+  
+  integrations: [
+    sanity({
+      projectId: '',//add your sanity project id here
+      dataset: 'production',
+      apiVersion: '2021-03-25',
+      useCdn: true,
+    }),
+    [react()],
+    tailwind(),
+  ],
+  markdown: {
+    smartypants: false,
+    gfm: false,
+    remarkPlugins: [],
+    rehypePlugins: [],
+    //syntaxHighlight: 'shiki',
+  },
+  components: {
+    types: {
+      unknown: './src/pages/article/[...slug].astro',
+    },
+  },
+});
+```
+
+-
+- Add Your Own Sanity Project ID. in sanity.config.ts
+```
+import {defineConfig} from 'sanity'
+import {deskTool} from 'sanity/desk'
+import {visionTool} from '@sanity/vision'
+import {schemaTypes} from './schemas'
+import { markdownSchema } from "sanity-plugin-markdown";
+
+
+export default defineConfig({
+  name: 'default',
+  title: 'astroBackEnd',
+
+  projectId: '', // Add Project ID Here
+  dataset: 'production',
+
+  plugins: [deskTool(), visionTool(),    markdownSchema(),],
+
+  schema: {
+    types: schemaTypes,
+  },
+  
+})
+
+```
+
+```
+import {defineCliConfig} from 'sanity/cli'
+
+- Also in sanity.cli.ts
+export default defineCliConfig({
+  api: {
+    projectId: '',
+    dataset: 'production'
+  }
+})
+
+```
 # REUPDATING
 
 - Built in [astro.build](https://astro.build/)
