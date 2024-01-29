@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 import sanity from 'astro-sanity';
 import markdownIntegration from '@astropub/md';
-import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
+import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   integrations: [
@@ -10,7 +10,7 @@ export default defineConfig({
       projectId: 'tojmg0db',
       dataset: 'production',
       apiVersion: '2021-03-25',
-      useCdn: true
+      useCdn: true,
     }),
     [react()],
     tailwind(),
@@ -21,13 +21,11 @@ export default defineConfig({
     gfm: false,
     remarkPlugins: [],
     rehypePlugins: [],
-    syntaxHighlight: 'shiki'
-    // syntaxHighlight: 'prism'
+    syntaxHighlight: 'shiki',
   },
   components: {
     types: {
-      unknown: './src/pages/article/[...slug].astro', // Change to the actual path of your component
-      inline: '@astropub/md/Inline', // Specify the component for inline markdown
+      unknown: './src/pages/article/[...slug].astro',
     },
   },
 });
