@@ -9,7 +9,7 @@ export default defineConfig({
   name: 'default',
   title: 'astroBackEnd',
 
-  projectId: 'tojmg0db',
+  projectId: '',// ADD Project Id Here
   dataset: 'production',
 
   plugins: [deskTool(), visionTool(),    markdownSchema(),],
