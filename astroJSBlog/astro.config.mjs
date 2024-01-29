@@ -1,24 +1,33 @@
 import { defineConfig } from 'astro/config';
 import sanity from 'astro-sanity';
-
-// https://astro.build/config
+import markdownIntegration from '@astropub/md';
 import react from "@astrojs/react";
-
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
-
-// https://astro.build/config
 export default defineConfig({
+  integrations: [
+    sanity({
+      projectId: 'tojmg0db',
+      dataset: 'production',
+      apiVersion: '2021-03-25',
+      useCdn: true
+    }),
+    [react()],
+    tailwind(),
+    markdownIntegration(),
+  ],
   markdown: {
     smartypants: false,
-    gfm: false
+    gfm: false,
+    remarkPlugins: [],
+    rehypePlugins: [],
+    syntaxHighlight: 'shiki'
+    // syntaxHighlight: 'prism'
   },
-  integrations: [sanity({
-    projectId: 'tojmg0db',
-    dataset: 'production',
-    apiVersion: '2021-03-25',
-    useCdn: true
-  }), [react()], tailwind()]
+  components: {
+    types: {
+      unknown: './src/pages/article/[...slug].astro', // Change to the actual path of your component
+      inline: '@astropub/md/Inline', // Specify the component for inline markdown
+    },
+  },
 });
