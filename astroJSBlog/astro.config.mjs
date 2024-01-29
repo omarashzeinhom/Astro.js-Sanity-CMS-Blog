@@ -5,6 +5,12 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
+  vite: {
+    ssr: {
+      // Add npm packages containing invalid code here
+      noExternal: ["@astrojs/markdown-remark","@astropub/md"],
+    },
+  },
   integrations: [
     sanity({
       projectId: 'tojmg0db',
