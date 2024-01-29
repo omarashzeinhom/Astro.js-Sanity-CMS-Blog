@@ -23,7 +23,7 @@ const articles = {
       title: "Article Body",
       description: "Add your Article Body here in Markdown",
       // change to MARKDOWN
-      type: "string",
+      type: "markdown",
     },
     {
       title: "Author",
