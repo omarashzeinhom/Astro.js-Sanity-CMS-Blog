@@ -35,3 +35,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
+## Packages Installed
+
+1. [astro-carousel](https://github.com/claudiabdm/astro-carousel)

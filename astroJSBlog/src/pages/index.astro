@@ -2,71 +2,69 @@
 import Layout from "../layouts/Layout.astro";
 import NavigationBar from "../components/NavigationBar.astro";
 import Footer from "../components/Footer.astro";
+import SwiperComponent from "../components/SwiperComponent.astro";
 import { useSanityClient } from "astro-sanity";
 import { urlForImage } from "../sanity/urlForImage";
 
 // Fetch articles
 const articlesQuery = `*[_type == "articles"]`;
 const articles = await useSanityClient().fetch(articlesQuery);
+
+// Prepare carousel images
+const carouselImages = articles.map((article) => ({
+  src: urlForImage(article.articleImage),
+  alt: article.title,
+ 
+}));
 ---
 
 <Layout title="ANDGOEDU Blog">
   <NavigationBar />
-  <br/>
-  <br/>
+  <br />
+  <br />
 
   <div class="container mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mt-8">
       Home
     </h2>
+
+    <!-- Rest of your content -->
     <div class="mt-10 grid gap-16 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
-      {
-        articles.map(
-          (article: {
-            title: string;
-            articleBody: string;
-            articleImage: any;
-            _createdAt: Date;
-            articleSlug: string;
-            articleAuthor: unknown;
-            categories: string;
-          }) => (
-            <article class="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
-              <a href={`article/${article?.articleSlug?.current}`}>
-                <img
-                  loading="lazy"
-                  class="w-full h-48 object-cover"
-                  src={urlForImage(article?.articleImage)}
-                  alt={article?.title.slice(0,10)}
-                />
+      {articles.map((article) => (
+        <article class="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
+          <a href={`article/${article?.articleSlug?.current}`}>
+            <img
+              loading="lazy"
+              class="w-full h-48 object-cover"
+              src={urlForImage(article?.articleImage)}
+              alt={article?.title.slice(0, 10)}
+            />
+          </a>
+          <div class="p-6 flex flex-col justify-between">
+            <a href={`article/${article?.articleSlug?.current}`}>
+              <h3 class="text-lg font-semibold text-gray-900 hover:text-gray-600 mt-3">
+                {article?.title.slice(0, 10)}
+              </h3>
+            </a>
+            <p class="mt-3 text-sm text-gray-600 line-clamp-3">
+              {article?.articleBody.substring(0, 50)}...
+            </p>
+            <div class="mt-4 flex items-center justify-between text-xs text-gray-500">
+              <time datetime={new Date(article?._createdAt).toISOString()}>
+                {new Date(article?._createdAt).toLocaleDateString()}
+              </time>
+              <a
+                href={`/category/${article?.categories}`}
+                class="bg-gray-200 text-gray-600 px-3 py-1 rounded-full hover:bg-gray-300"
+              >
+                {article?.categories}
               </a>
-              <div class="p-6 flex flex-col justify-between">
-                <a href={`article/${article?.articleSlug?.current}`}>
-                  <h3 class="text-lg font-semibold text-gray-900 hover:text-gray-600 mt-3">
-                    {article?.title.slice(0,10)}
-                  </h3>
-                </a>
-                <p class="mt-3 text-sm text-gray-600 line-clamp-3">
-                  {article?.articleBody.substring(0, 50)}...
-                </p>
-                <div class="mt-4 flex items-center justify-between text-xs text-gray-500">
-                  <time datetime={new Date(article?._createdAt).toISOString()}>
-                    {new Date(article?._createdAt).toLocaleDateString()}
-                  </time>
-                  <a
-                    href={`/category/${article?.categories}`}
-                    class="bg-gray-200 text-gray-600 px-3 py-1 rounded-full hover:bg-gray-300"
-                  >
-                    {article?.categories}
-                  </a>
-                </div>
-              </div>
-            </article>
-          )
-        )
-      }
+            </div>
+          </div>
+        </article>
+      ))}
     </div>
   </div>
-  
+
   <Footer />
 </Layout>
