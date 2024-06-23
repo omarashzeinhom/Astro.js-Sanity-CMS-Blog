@@ -1,40 +1,40 @@
-## 🚀 Blog
+# Setup
+- Front End
+- Add Your Own Sanity Project ID. in astro.config.mjs
 
-Inside of your Astro project, you'll see the following folders and files:
-
+```mjs
+export default defineConfig({
+  integrations: [
+    sanity({
+      projectId: "", //add your sanity project id here
+      dataset: "production",
+      apiVersion: "2021-03-25",
+      useCdn: true,
+    }),
+    [react()],
+    tailwind(),
+  ],
+  markdown: {
+    smartypants: false,
+    gfm: false,
+    remarkPlugins: [],
+    rehypePlugins: [],
+    //syntaxHighlight: 'shiki',
+  },
+  components: {
+    types: {
+      unknown: "./src/pages/article/[...slug].astro",
+    },
+  },
+});
 ```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+
+## Start By
+
+- Start by
+
+```bash
+yarn run dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
-
-## Packages Installed
-
-1. [astro-carousel](https://github.com/claudiabdm/astro-carousel)
+- Deploy by `bash yarn build` and upload `./dist/` directory to [netlify](https://app.netlify.com)
