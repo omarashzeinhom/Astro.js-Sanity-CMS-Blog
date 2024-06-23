@@ -6,7 +6,7 @@ const { images,  } = Astro.props;
 
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-        {images.map(image => (
+        {images.map((image: { src: string | null | undefined; alt: string | null | undefined; }) => (
                         <div class="swiper-slide">
                             <img src={image.src} alt={image.alt} style="width: 100%; height: auto;" />
                           </div>
