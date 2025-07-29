@@ -21,7 +21,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.77.5",
-    "swiper": "^11.1.4",
+    "swiper": "^11.2.10",
     "tailwindcss": "^3.0.24"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
